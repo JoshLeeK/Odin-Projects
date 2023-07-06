@@ -5,7 +5,6 @@ let comScore = 0;
 let comChoice = getComputerChoice();
 // let humanChoice = prompt( "What is your move?" )
 let humanChoice = getComputerChoice();
-let result;
 
 function getComputerChoice() {
     let random = options[Math.floor(Math.random()*options.length)];
@@ -29,19 +28,22 @@ function play(comChoice, humanChoice) {
     }
 
     function game() {
-        play(comChoice, humanChoice);
+                 play(comChoice, humanChoice);
 
-        if (play(comChoice, humanChoice) == "win"){
-            humanScore++;
-            console.log("your score " + humanScore)
-        }
-        else if (play(comChoice, humanChoice) == "lose"){
-            comScore++;
-            console.log("com score " + comScore)
-        }
-        else {
-            console.log("tie!")
-        }
+                if (play(comChoice, humanChoice) == "win"){
+                    humanScore++;
+                    console.log("your score " + humanScore)
+                    return humanScore;
+                }
+                else if (play(comChoice, humanChoice) == "lose"){
+                    comScore++;
+                    console.log("com score " + comScore)
+                    return comScore;
+                }
+                else {
+                    console.log("tie!")
+                    return;
+                }
     }
 
     game();
