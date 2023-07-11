@@ -13,46 +13,39 @@ function getComputerChoice() {
 // console.log(comChoice)
 // console.log(humanChoice)
 
-function play(comChoice, humanChoice) {
+function play() {
+
+    let comChoice = getComputerChoice();
+    // let humanChoice = prompt( "What is your move?" )
+    let humanChoice = getComputerChoice();
+    
     if (comChoice === 'Rock' && humanChoice === 'Paper' 
     || comChoice === 'Paper' && humanChoice === 'Scissors' 
     || comChoice === 'Scissors' && humanChoice === 'Rock') {
+        humanScore++;
         return "win";
     }
     else if (comChoice === humanChoice){
         return "tie";
-    }
-    else {
+    }  else {
+        comScore++;
         return "lose";
         }
     }
 
-    function game() {
-                 play(comChoice, humanChoice);
+function game() {
+    play();
 
-                if (play(comChoice, humanChoice) == "win"){
-                    humanScore++;
-                    console.log("your score " + humanScore)
-                    return humanScore;
-                }
-                else if (play(comChoice, humanChoice) == "lose"){
-                    comScore++;
-                    console.log("com score " + comScore)
-                    return comScore;
-                }
-                else {
-                    console.log("tie!")
-                    return;
-                }
+    if (comScore >= 5)  {
+        return "Game Over, you lose!";
+    } else if (humanScore >= 5) {
+        return "Game Over, you win!"
+    } else {
+        return "Keep Playing";
     }
 
-    game();
-    game();
-    game();
-    game();
-    game();
+}
 
-    console.log(play(comChoice,humanChoice));
-
-    console.log(humanScore);
-    console.log(comScore);
+console.log(game());
+console.log(comScore);
+console.log(humanScore);
