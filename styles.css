@@ -1,0 +1,31 @@
+body {
+    font-family: 'Inknut Antiqua', serif;
+      font-weight: 700;
+      width: 100%;
+      background-color: #F2EFE9;
+  }
+
+  .headsection {
+    text-align: center;
+  }
+
+  button {
+    border-radius: 15px;
+  }
+
+  h1 {
+    padding-top: 40px;
+    font-size: 90px;
+  }
+
+  /* Colors */
+
+  .red {
+    color: #b81823;
+  }
+  .green {
+    color: #229113;
+  }
+  .blue {
+    color: #33598a;
+  }

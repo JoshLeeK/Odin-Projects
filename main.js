@@ -1,3 +1,19 @@
+const songBtn = document.getElementById('songbtn');
+const songBtnNo = document.getElementById('songbtnno');
+
+const audio = document.getElementById("song");
+
+
+  songBtn.addEventListener('click', () => {
+    audio.play();
+  });
+
+  songBtnNo.addEventListener('click', () => {
+    audio.pause();
+    currentTime = 0;
+  });
+
+// Game 
 
 const options = ['Rock', 'Paper', 'Scissors',];
 let humanScore = 0;
@@ -10,8 +26,6 @@ function getComputerChoice() {
     let random = options[Math.floor(Math.random()*options.length)];
     return random;
 }
-// console.log(comChoice)
-// console.log(humanChoice)
 
 function play() {
 
