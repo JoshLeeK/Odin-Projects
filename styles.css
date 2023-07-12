@@ -9,13 +9,15 @@ body {
     text-align: center;
   }
 
-  button {
+  .musicbtn {
     border-radius: 15px;
+    border: 1px solid black;
+    background-color:#F2EFE9 ;
   }
 
   h1 {
     padding-top: 40px;
-    font-size: 90px;
+    font-size: 80px;
   }
 
   /* Colors */
@@ -29,3 +31,103 @@ body {
   .blue {
     color: #33598a;
   }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  #result {
+    height: 350px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  #resulttext {
+    padding-top: 25px;
+    padding-bottom: 65px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  #scoreboxes {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+
+  .scores {
+    width: 20%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 15px;
+  }
+
+  #races {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  button {
+    max-width: 25%;
+    border: none;
+  }
+  .racephoto {
+    border-radius: 15px;
+    max-width: 100%;
+    height: auto;
+  }
+
+.bigbtn {
+  display: block;
+  border-radius: 15px;
+  border: 2px solid black;
+  background-color:#F2EFE9;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.racebtn {
+  transition: all .5s ease;
+  background-color:#F2EFE9 ;
+  border: none;
+  border-radius: 15px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 33%;
+
+
+}
+
+.playing {
+  background-color: #F2EFE9;
+  transform: scale(1.1);
+  border-color: black;
+  box-shadow: 0 0 1rem black;
+}
+
+#col2 {
+  display: flex;
+  align-content: center;
+}
+
+.divbox {
+  width: 100%;
+}

@@ -13,53 +13,111 @@ const audio = document.getElementById("song");
     currentTime = 0;
   });
 
+
 // Game 
 
-const options = ['Rock', 'Paper', 'Scissors',];
+// Setup
+const options = ['giant', 'wizard', 'elf',];
 let humanScore = 0;
 let comScore = 0;
-let comChoice = getComputerChoice();
-// let humanChoice = prompt( "What is your move?" )
-let humanChoice = getComputerChoice();
+// let comChoice = getComputerChoice();
 
+let roundresulttext = document.getElementById('resulttext');
+let comscoredisplay = document.getElementById('comscore');
+let humanscoredisplay = document.getElementById('humanscore');
+
+// Buttons
+
+const wizardbtn = document.getElementById('wizard');
+const giantbtn = document.getElementById('giant');
+const elfbtn = document.getElementById('elf');
+
+const buttons = document.querySelectorAll('button');
+
+const resetbtn = document.getElementById('resetbtn');
+
+// Function for random computer choice
 function getComputerChoice() {
     let random = options[Math.floor(Math.random()*options.length)];
     return random;
 }
 
-function play() {
 
-    let comChoice = getComputerChoice();
-    // let humanChoice = prompt( "What is your move?" )
-    let humanChoice = getComputerChoice();
+
+
+function play(comChoice, humanChoice) {
+
+    comChoice = getComputerChoice();
+    humanChoice = playerChoice;
     
-    if (comChoice === 'Rock' && humanChoice === 'Paper' 
-    || comChoice === 'Paper' && humanChoice === 'Scissors' 
-    || comChoice === 'Scissors' && humanChoice === 'Rock') {
+    if (comChoice === 'giant' && humanChoice === 'wizard' 
+    || comChoice === 'wizard' && humanChoice === 'elf' 
+    || comChoice === 'elf' && humanChoice === 'giant') {
         humanScore++;
+        humanscoredisplay.textContent = ("Your Victories: " + humanScore);
+        roundresulttext.textContent = "Your allies pushed the enemy back! Keep going!"
         return "win";
     }
     else if (comChoice === humanChoice){
+        roundresulttext.textContent = "You hired the same ally your enemy did. That's awkward..."
         return "tie";
-    }  else {
+    } else if (comChoice === 'giant' && humanChoice === 'elf' 
+    || comChoice === 'wizard' && humanChoice === 'giant' 
+    || comChoice === 'elf' && humanChoice === 'wizard') {
         comScore++;
+        comscoredisplay.textContent = ("Enemies Victories: " + comScore);
+        roundresulttext.textContent = "Your allies were deafeated by the enemy! Don't give up!"
         return "lose";
+        }
+        else {
+            return;
         }
     }
 
-function game() {
-    play();
 
-    if (comScore >= 5)  {
-        return "Game Over, you lose!";
-    } else if (humanScore >= 5) {
-        return "Game Over, you win!"
-    } else {
-        return "Keep Playing";
-    }
-
+function reset() {
+     humanScore = 0;
+     comScore = 0;
+     humanscoredisplay.textContent = ("Your Victories: " + humanScore);
+     comscoredisplay.textContent = ("Enemies Victories: " + comScore);
 }
 
-console.log(game());
-console.log(comScore);
-console.log(humanScore);
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (comScore < 5 && humanScore < 5){
+            button.classList.add('playing');
+            playerChoice = button.id;
+            comChoice = getComputerChoice();
+            play(comChoice, playerChoice);
+
+            if (comScore >= 5)  {
+                roundresulttext.textContent = "You have been defeated... The king of Barador has destroyed you."
+                return;
+            } else if (humanScore >= 5) {
+                roundresulttext.textContent = "You have conquered! The king of Barador is forever defeated!"
+                return;
+            } else {
+                return;
+            }
+
+        } else if (comScore >= 5) {
+            alert("The game is over. Please use the reset button.");
+            return;
+        } else if (humanScore >= 5) {
+            alert("The game is over. Please use the reset button.");
+            return;
+        } else {
+            return;
+        }
+    });; 
+
+
+})
+
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+resetbtn.addEventListener('click', reset);
+buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
