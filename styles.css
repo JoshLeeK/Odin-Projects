@@ -36,6 +36,9 @@ body {
     font-size: 16px;
   }
 
+
+  /* Result Box */
+
   #result {
     height: 350px;
     text-align: center;
@@ -70,6 +73,8 @@ body {
     padding: 15px;
   }
 
+
+  /* Races */
   #races {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -90,18 +95,6 @@ body {
     height: auto;
   }
 
-.bigbtn {
-  display: block;
-  border-radius: 15px;
-  border: 2px solid black;
-  background-color:#F2EFE9;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding: 20px;
-  font-size: 24px;
-}
 
 .racebtn {
   transition: all .5s ease;
@@ -130,4 +123,17 @@ body {
 
 .divbox {
   width: 100%;
+}
+
+.bigbtn {
+  display: block;
+  border-radius: 15px;
+  border: 2px solid black;
+  background-color:#F2EFE9;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  font-size: 24px;
 }

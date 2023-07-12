@@ -1,17 +1,16 @@
+// Audio
 const songBtn = document.getElementById('songbtn');
 const songBtnNo = document.getElementById('songbtnno');
-
 const audio = document.getElementById("song");
-
-
-  songBtn.addEventListener('click', () => {
+  
+songBtn.addEventListener('click', () => {
     audio.play();
-  });
+    });
 
-  songBtnNo.addEventListener('click', () => {
+songBtnNo.addEventListener('click', () => {
     audio.pause();
     currentTime = 0;
-  });
+    });
 
 
 // Game 
@@ -20,8 +19,6 @@ const audio = document.getElementById("song");
 const options = ['giant', 'wizard', 'elf',];
 let humanScore = 0;
 let comScore = 0;
-// let comChoice = getComputerChoice();
-
 let roundresulttext = document.getElementById('resulttext');
 let comscoredisplay = document.getElementById('comscore');
 let humanscoredisplay = document.getElementById('humanscore');
@@ -42,9 +39,7 @@ function getComputerChoice() {
     return random;
 }
 
-
-
-
+// Game Logic
 function play(comChoice, humanChoice) {
 
     comChoice = getComputerChoice();
@@ -65,7 +60,7 @@ function play(comChoice, humanChoice) {
     || comChoice === 'wizard' && humanChoice === 'giant' 
     || comChoice === 'elf' && humanChoice === 'wizard') {
         comScore++;
-        comscoredisplay.textContent = ("Enemies Victories: " + comScore);
+        comscoredisplay.textContent = ("Enemy Victories: " + comScore);
         roundresulttext.textContent = "Your allies were deafeated by the enemy! Don't give up!"
         return "lose";
         }
@@ -75,12 +70,22 @@ function play(comChoice, humanChoice) {
     }
 
 
+// Function to reset score
+
 function reset() {
      humanScore = 0;
      comScore = 0;
      humanscoredisplay.textContent = ("Your Victories: " + humanScore);
-     comscoredisplay.textContent = ("Enemies Victories: " + comScore);
+     comscoredisplay.textContent = ("Enemy Victories: " + comScore);
 }
+
+// Remove transition function - Button Effects
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+// Event Listeners
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -114,10 +119,5 @@ buttons.forEach((button) => {
 
 })
 
-
-function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
 resetbtn.addEventListener('click', reset);
 buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
